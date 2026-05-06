@@ -4,23 +4,26 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-[15px] font-medium tracking-tight transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+          "bg-foreground text-background hover:bg-foreground/90 active:scale-[0.98]",
+        // Primary "Apple blue" CTA
         aurora:
-          "relative overflow-hidden text-white shadow-lg shadow-aurora-violet/30 bg-[linear-gradient(110deg,hsl(265_90%_65%),hsl(235_85%_65%),hsl(190_95%_60%),hsl(160_80%_55%))] bg-[length:200%_100%] hover:bg-[position:100%_0] transition-[background-position] duration-700",
+          "bg-apple-blue text-white shadow-[0_1px_2px_rgba(0,113,227,0.25)] hover:bg-[#0077ed] active:scale-[0.98]",
         outline:
-          "border border-white/15 bg-white/[0.02] backdrop-blur-sm hover:bg-white/[0.06] hover:border-white/25",
-        ghost: "hover:bg-white/[0.06]",
-        link: "text-primary underline-offset-4 hover:underline",
+          "border border-border bg-background text-foreground hover:bg-secondary active:scale-[0.98]",
+        secondary:
+          "bg-secondary text-foreground hover:bg-secondary/80 active:scale-[0.98]",
+        ghost: "hover:bg-secondary text-foreground",
+        link: "text-apple-blue underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-10 px-5 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-12 rounded-md px-8 text-base",
+        default: "h-10 px-5",
+        sm: "h-9 px-4 text-sm",
+        lg: "h-12 px-7 text-base",
         icon: "h-10 w-10",
       },
     },

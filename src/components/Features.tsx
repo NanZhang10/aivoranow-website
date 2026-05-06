@@ -36,30 +36,28 @@ const FEATURES = [
 
 export function Features() {
   return (
-    <section id="features" className="relative py-28 sm:py-36 border-t border-white/5">
+    <section id="features" className="relative bg-background py-28 sm:py-36">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="max-w-2xl"
+          className="max-w-3xl"
         >
-          <p className="text-xs uppercase tracking-[0.2em] text-aurora-cyan/80">
-            Capabilities
-          </p>
-          <h2 className="mt-4 text-4xl sm:text-5xl font-bold tracking-tight">
-            How we work,
+          <p className="text-[13px] font-medium text-apple-blue">Capabilities</p>
+          <h2 className="mt-3 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tighter-2 leading-[1.05]">
+            How we work.
             <br />
-            <span className="text-aurora">why it sticks.</span>
+            <span className="text-aurora">Why it sticks.</span>
           </h2>
-          <p className="mt-5 text-muted-foreground">
+          <p className="mt-5 text-lg text-muted-foreground max-w-xl">
             Six commitments that shape every product we build and every
             engagement we run.
           </p>
         </motion.div>
 
-        <div className="mt-16 grid gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((feature, i) => {
             const Icon = feature.icon;
             return (
@@ -69,13 +67,16 @@ export function Features() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: i * 0.06 }}
-                className="bg-background p-8 hover:bg-white/[0.02] transition-colors"
+                whileHover={{ y: -3 }}
+                className="rounded-3xl border border-border bg-card p-7 shadow-card transition-shadow duration-300 hover:shadow-card-hover"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04]">
-                  <Icon className="h-5 w-5 text-aurora-cyan" />
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-secondary">
+                  <Icon className="h-5 w-5 text-apple-blue" />
                 </div>
-                <h3 className="mt-5 text-lg font-semibold">{feature.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <h3 className="mt-5 text-[17px] font-semibold tracking-tight">
+                  {feature.title}
+                </h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
                   {feature.body}
                 </p>
               </motion.div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Mail, Send } from "lucide-react";
+import { Mail, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -23,7 +23,7 @@ export function Contact() {
   })();
 
   return (
-    <section id="contact" className="relative py-28 sm:py-36 border-t border-white/5">
+    <section id="contact" className="relative bg-background py-28 sm:py-36">
       <div className="container grid gap-16 lg:grid-cols-2 lg:gap-24">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -31,24 +31,22 @@ export function Contact() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-xs uppercase tracking-[0.2em] text-aurora-cyan/80">
-            Contact
-          </p>
-          <h2 className="mt-4 text-4xl sm:text-5xl font-bold tracking-tight">
+          <p className="text-[13px] font-medium text-apple-blue">Contact</p>
+          <h2 className="mt-3 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tighter-2 leading-[1.05]">
             Let's build
             <br />
             <span className="text-aurora">something useful.</span>
           </h2>
-          <p className="mt-5 text-muted-foreground">
+          <p className="mt-5 text-lg text-muted-foreground max-w-xl">
             Tell us about the problem you're trying to solve. Pilots, product
             partnerships, or a curious "could this work?" — we read every note.
           </p>
 
           <a
             href={`mailto:${EMAIL}`}
-            className="mt-8 inline-flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.02] px-4 py-3 text-sm transition-colors hover:bg-white/[0.05]"
+            className="mt-8 inline-flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-sm shadow-card transition-shadow hover:shadow-card-hover"
           >
-            <Mail className="h-4 w-4 text-aurora-cyan" />
+            <Mail className="h-4 w-4 text-apple-blue" />
             <span className="font-medium">{EMAIL}</span>
           </a>
         </motion.div>
@@ -62,7 +60,7 @@ export function Contact() {
             e.preventDefault();
             window.location.href = mailtoHref;
           }}
-          className="relative rounded-2xl border border-white/10 bg-white/[0.02] p-8 backdrop-blur-sm"
+          className="relative rounded-3xl border border-border bg-card p-8 shadow-card"
         >
           <div className="space-y-5">
             <div className="grid gap-5 sm:grid-cols-2">
@@ -112,10 +110,10 @@ export function Contact() {
               className="w-full"
             >
               Send message
-              <Send className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4" />
             </Button>
 
-            <p className="text-xs text-muted-foreground/70">
+            <p className="text-xs text-muted-foreground">
               Your browser will open an email draft to {EMAIL}.
             </p>
           </div>

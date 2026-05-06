@@ -5,8 +5,8 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
-      screens: { "2xl": "1400px" },
+      padding: "1.5rem",
+      screens: { "2xl": "1280px" },
     },
     extend: {
       colors: {
@@ -39,26 +39,32 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        aurora: {
-          violet: "hsl(265 90% 65%)",
-          indigo: "hsl(235 85% 65%)",
-          cyan: "hsl(190 95% 60%)",
-          mint: "hsl(160 80% 55%)",
+        // Apple-inspired accent palette
+        apple: {
+          blue: "#0071e3",
+          indigo: "#5e5ce6",
+          purple: "#af52de",
+          pink: "#ff375f",
+          ink: "#1d1d1f",
+          gray: "#86868b",
+          surface: "#f5f5f7",
         },
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 4px)",
+        sm: "calc(var(--radius) - 8px)",
       },
       fontFamily: {
         sans: [
           "Inter",
-          "ui-sans-serif",
-          "system-ui",
           "-apple-system",
-          "Segoe UI",
-          "Roboto",
+          "BlinkMacSystemFont",
+          "SF Pro Display",
+          "SF Pro Text",
+          "Helvetica Neue",
+          "Helvetica",
+          "Arial",
           "sans-serif",
         ],
       },
@@ -69,7 +75,7 @@ export default {
         },
       },
       animation: {
-        "aurora-shift": "aurora-shift 18s ease-in-out infinite",
+        "aurora-shift": "aurora-shift 12s ease-in-out infinite",
       },
     },
   },

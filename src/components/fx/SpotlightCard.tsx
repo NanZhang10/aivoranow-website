@@ -9,8 +9,8 @@ import {
 import { cn } from "@/lib/utils";
 
 /**
- * Pointer-tracked spotlight + 3D tilt wrapper.
- * Uses motion values exclusively — no React re-renders during pointer move.
+ * Pointer-tracked spotlight + very subtle 3D tilt.
+ * Tuned for a light/Apple aesthetic — gentle blue spotlight, max ~3deg tilt.
  */
 export function SpotlightCard({
   children,
@@ -21,23 +21,21 @@ export function SpotlightCard({
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
-  // raw 0..1 pointer position within the card
   const px = useMotionValue(0.5);
   const py = useMotionValue(0.5);
 
-  // spotlight follow (pixels), spring-eased
   const sxRaw = useMotionValue(0);
   const syRaw = useMotionValue(0);
   const sx = useSpring(sxRaw, { stiffness: 200, damping: 22 });
   const sy = useSpring(syRaw, { stiffness: 200, damping: 22 });
 
-  // 3D tilt — center -> 0deg, edges -> +/-6deg
-  const rxTarget = useTransform(py, [0, 1], [6, -6]);
-  const ryTarget = useTransform(px, [0, 1], [-6, 6]);
+  // Very gentle tilt — Apple aesthetic
+  const rxTarget = useTransform(py, [0, 1], [3, -3]);
+  const ryTarget = useTransform(px, [0, 1], [-3, 3]);
   const rotateX = useSpring(rxTarget, { stiffness: 160, damping: 18 });
   const rotateY = useSpring(ryTarget, { stiffness: 160, damping: 18 });
 
-  const spotlight = useMotionTemplate`radial-gradient(280px circle at ${sx}px ${sy}px, hsl(190 95% 60% / 0.18), transparent 70%)`;
+  const spotlight = useMotionTemplate`radial-gradient(320px circle at ${sx}px ${sy}px, rgba(0,113,227,0.10), transparent 65%)`;
 
   function onMove(e: React.MouseEvent<HTMLDivElement>) {
     const el = ref.current;
@@ -61,7 +59,7 @@ export function SpotlightCard({
       ref={ref}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      style={{ rotateX, rotateY, transformPerspective: 800 }}
+      style={{ rotateX, rotateY, transformPerspective: 1000 }}
       className={cn("relative [transform-style:preserve-3d]", className)}
     >
       <motion.div
