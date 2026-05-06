@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { SpotlightCard } from "@/components/fx/SpotlightCard";
 
 const PRODUCTS = [
   {
@@ -73,44 +74,50 @@ export function Products() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: i * 0.1 }}
-                whileHover={{ y: -6 }}
+                className="group"
               >
-                <Card className="group relative h-full overflow-hidden transition-colors hover:border-white/20">
-                  <div
-                    className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${product.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                  />
+                <SpotlightCard className="h-full rounded-xl">
+                  <Card className="relative h-full overflow-hidden border-white/10 transition-colors group-hover:border-white/20">
+                    <div
+                      className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${product.accent} opacity-0 group-hover:opacity-60 transition-opacity duration-500`}
+                    />
 
-                  <CardHeader className="relative">
-                    <div className="flex items-start justify-between">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04]">
-                        <Icon className="h-5 w-5 text-aurora-cyan" />
-                      </div>
-                      <ArrowUpRight className="h-4 w-4 text-muted-foreground/40 transition-all group-hover:text-foreground group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                    </div>
-                    <CardTitle className="mt-5 text-xl">
-                      {product.name}
-                    </CardTitle>
-                    <CardDescription className="text-aurora-cyan/80">
-                      {product.tagline}
-                    </CardDescription>
-                  </CardHeader>
-
-                  <CardContent className="relative">
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {product.description}
-                    </p>
-                    <div className="mt-6 flex flex-wrap gap-2">
-                      {product.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-0.5 text-xs text-muted-foreground"
+                    <CardHeader className="relative">
+                      <div className="flex items-start justify-between">
+                        <motion.div
+                          whileHover={{ rotate: -8, scale: 1.05 }}
+                          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                          className="flex h-11 w-11 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04]"
                         >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+                          <Icon className="h-5 w-5 text-aurora-cyan" />
+                        </motion.div>
+                        <ArrowUpRight className="h-4 w-4 text-muted-foreground/40 transition-all group-hover:text-foreground group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                      </div>
+                      <CardTitle className="mt-5 text-xl">
+                        {product.name}
+                      </CardTitle>
+                      <CardDescription className="text-aurora-cyan/80">
+                        {product.tagline}
+                      </CardDescription>
+                    </CardHeader>
+
+                    <CardContent className="relative">
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        {product.description}
+                      </p>
+                      <div className="mt-6 flex flex-wrap gap-2">
+                        {product.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-0.5 text-xs text-muted-foreground"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </SpotlightCard>
               </motion.div>
             );
           })}
