@@ -24,7 +24,7 @@ export function Footer() {
             About
           </a>
           <a
-            href="mailto:aivoranow@gmail.com"
+            href="mailto:dev@aivoranow.com"
             className="hover:text-foreground transition-colors"
           >
             Contact

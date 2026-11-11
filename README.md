@@ -43,4 +43,4 @@ src/
 
 All copy is inline in the component files — no CMS, no JSON. The product list lives in `Products.tsx`, the capability list in `Features.tsx`, and the company copy in `Hero.tsx` / `About.tsx`.
 
-The contact form opens the user's mail client to `aivoranow@gmail.com` via a `mailto:` link.
+The contact form opens the user's mail client to `dev@aivoranow.com` via a `mailto:` link.
